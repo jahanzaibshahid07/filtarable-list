@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>My Contacts</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+</head>
+
+<body>
+		
+	<div class="container">
+			<h1 class="center-align">
+				My contacts
+			</h1>
+
+			<input type="text" id="filterInput" placeholder="Search name ">
+			
+			<ul id="names" class="collection with-header">
+				<li class="collection-header">
+					<h5>A</h5>
+				</li>
+				<li class="collection-item">
+					<a href="#">Ali</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Adam</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Anna</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Abe</a>
+				</li>
+				<li class="collection-header">
+					<h5>B</h5>
+				</li>
+				<li class="collection-item">
+					<a href="#">Bred</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Beth</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Beckham</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Breedy</a>
+				</li>
+				<li class="collection-header">
+					<h5>C</h5>
+				</li>
+				<li class="collection-item">
+					<a href="#">Cethy</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Casson</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Cardy</a>
+				</li>
+				<li class="collection-item">
+					<a href="#">Cat</a>
+				</li>
+			</ul>
+		</div>	
+
+		<script>
+			// get input element
+			var filterInput = document.getElementById('filterInput');
+
+			var filterNames = function()
+			{
+				// get the values of input
+				var filterValue = document.getElementById('filterInput').value.toUpperCase();
+					// get names in ul
+			var ul = document.getElementById('names');
+			
+			// get list from the ul
+			var li = ul.querySelectorAll('li.collection-item'); //it return array
+
+			//loop through collection item list
+				for (var i = 0; i < li.length; i++)
+				{
+					var a = li[i].getElementsByTagName('a')[0]; // access every values of array at 0 index
+
+					//if matched
+					if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1)
+					{
+						li[i].style.display = ''; // display matching
+					}
+					else
+					{
+						li[i].style.display = 'none'; // display nothing
+					}
+				}
+			};
+
+
+			// listen for user
+			filterInput.addEventListener('keyup',filterNames);
+		</script>
+
+</body>
+</html>
